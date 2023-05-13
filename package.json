@@ -1,0 +1,9 @@
+{
+  "name": "NASA-BOT-DISCORD-NEW",
+  "version": "1.0.0",
+  "description": "My new NASA bot project",
+  "main": "bot.js",
+  "dependencies": {
+    "discord.js": "^13.1.0"
+  }
+}
