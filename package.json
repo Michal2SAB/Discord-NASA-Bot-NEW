@@ -1,0 +1,24 @@
+{
+  "name": "discord-nasa-bot-new",
+  "version": "1.0.0",
+  "description": "Simple bot for space stuff",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "14.x.x"
+  },
+  "engines": {
+    "node": "^16.9.0"
+  },
+  "repository": {
+    "url": "https://github.com/Michal2SAB/Discord-NASA-Bot-NEW"
+  },
+  "license": "MIT",
+  "keywords": [
+    "discord",
+    "nasa",
+    "bot"
+  ]
+}
