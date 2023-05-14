@@ -18,7 +18,7 @@ const client = new Client({
 const commands = new Collection();
 const commandPrefix = config.prefix;
 
-const commandWhitelist = ['help', 'insight'];
+const commandWhitelist = ['help', 'insight', 'marsimage'];
 
 const commandFiles = fs.readdirSync(path.join(__dirname, 'commands')).filter(file => {
     // Validate the file name to prevent directory traversal attacks
@@ -38,9 +38,14 @@ for (const file of commandFiles) {
     commands.set(command.name, command);
 }
 
+// Prevent user input attacks
+function sanitizeInput(input) {
+  return input.replace(/[^a-z0-9]/gi, '');
+}
+
 // Confirm login
 client.once(Events.ClientReady, c => {
-	console.log(`Logged in as ${c.user.tag}`);
+  console.log(`Logged in as ${c.user.tag}`);
   
   // Set the bot's nickname and presence using the config settings
   client.user.setUsername(config.nickname);
@@ -54,7 +59,9 @@ client.once(Events.ClientReady, c => {
 client.on('messageCreate', message => {
   if (!message.content.startsWith(commandPrefix) || message.author.bot) return;
   
-  const args = message.content.slice(1).trim().split(/ +/);
+  let args = message.content.slice(1).trim().split(/ +/);
+  args = args.map(arg => sanitizeInput(arg));
+	
   const commandName = args.shift().toLowerCase();
 
   const command = commands.get(commandName);
