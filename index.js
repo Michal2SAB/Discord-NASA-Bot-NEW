@@ -14,7 +14,7 @@ const client = new Client({
 
 const commands = new Collection();
 
-const commandWhitelist = ['ping', 'help', 'about'];
+const commandWhitelist = ['help', 'insight'];
 
 const commandFiles = fs.readdirSync(path.join(__dirname, 'commands')).filter(file => {
     // Validate the file name to prevent directory traversal attacks
