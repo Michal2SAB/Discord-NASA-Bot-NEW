@@ -1,0 +1,10 @@
+{
+  "prefix": "!",
+  "nickname": "Space",
+  "status": "online",
+  "activity": {
+      "name": "with code",
+      "type": "PLAYING"
+  },
+  "token": "BOT_TOKEN_HERE"
+}
