@@ -2,19 +2,11 @@
 const fetch = require('node-fetch');
 const { EmbedBuilder } = require('discord.js');
 
-// Prevent input attacks
-function sanitizeInput(input) {
-  return input.replace(/[^a-z0-9]/gi, '');
-}
-
 module.exports = {
     name: 'marsimage',
     description: 'Get a random image from a random sol of a random Mars rover using NASA\'s Mars Rover Photos API',
   
     async execute(message, args, commands) {
-        // Remove illegal characters from args
-        args = args.map(arg => sanitizeInput(arg));
-      
         const rovers = ['curiosity', 'opportunity', 'spirit', 'perseverance'];
       
         let rover;
