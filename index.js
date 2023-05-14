@@ -1,7 +1,10 @@
 // Necessary discord.js classes
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, ActivityType } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
+
+// Load the bot configuration
+const config = require('./config.json');
 
 // Creating a new client instance
 const client = new Client({ 
@@ -13,6 +16,7 @@ const client = new Client({
   ]});
 
 const commands = new Collection();
+const commandPrefix = config.prefix;
 
 const commandWhitelist = ['help', 'insight'];
 
@@ -37,11 +41,18 @@ for (const file of commandFiles) {
 // Confirm login
 client.once(Events.ClientReady, c => {
 	console.log(`Logged in as ${c.user.tag}`);
+  
+  // Set the bot's nickname and presence using the config settings
+  client.user.setUsername(config.nickname);
+  client.user.setPresence({
+    activities: [{ name: config.activity.name, type: ActivityType[config.activity.type] }],
+    status: config.status
+  });
 });
 
 // Handle commands
 client.on('messageCreate', message => {
-  if (!message.content.startsWith('!') || message.author.bot) return;
+  if (!message.content.startsWith(commandPrefix) || message.author.bot) return;
   
   const args = message.content.slice(1).trim().split(/ +/);
   const commandName = args.shift().toLowerCase();
@@ -59,5 +70,5 @@ client.on('messageCreate', message => {
   
 });
 
-// Attempt login with bot token
-client.login(process.env.BOT_TOKEN);
+// Attempt login with bot token, using environment variables or config.token
+client.login(process.env.DISCORD_TOKEN);
