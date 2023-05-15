@@ -22,3 +22,9 @@ Writing another NASA Discord Bot from scratch.
   - Get a random image from a random sol of a random Mars rover using NASA\'s Mars Rover Photos API.
 </details>
 
+<details>
+  <summary>!jwstnews</summary>
+  
+  - Get the latest james webb telescope news.
+</details>
+
