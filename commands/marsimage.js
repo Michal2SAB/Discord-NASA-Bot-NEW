@@ -25,12 +25,19 @@ module.exports = {
         const maxSol = manifestData.photo_manifest.max_sol;
         
         let sol;
+        let embedDescription = `Random image from the ${rover} rover. Max sol: ${maxSol}`;
         
-        // Choose random sol up to the most recent if not specified
+        // Choose random sol up to the most recent if not specified otherwise
         if (args.length > 1 && !isNaN(args[1]) && parseInt(args[1]) >= 0 && parseInt(args[1]) <= maxSol) {
             sol = parseInt(args[1]);
+            embedDescription = `Image from the ${rover} rover, sol ${sol}. Max sol: ${maxSol}`;
         } else {
-            sol = Math.floor(Math.random() * (maxSol + 1));
+            if (args.length > 1 && args[1].toLowerCase() === "new") {
+                sol = maxSol;
+                embedDescription = `Newest image from the ${rover} rover. Max sol: ${maxSol}`;
+            } else {
+                sol = Math.floor(Math.random() * (maxSol + 1));
+            }
         }
         
         // Get random image from the NASA api
@@ -47,7 +54,7 @@ module.exports = {
         // Create embed object
         const embed = new EmbedBuilder()
           .setTitle(`${rover.charAt(0).toUpperCase() + rover.slice(1)} Rover`)
-          .setDescription(`Random image from the ${rover} rover. Max sol: ${maxSol}`)
+          .setDescription(embedDescription)
           .setImage(photo.img_src)
           .setFooter({text: `Sol: ${sol} | Earth Date: ${photo.earth_date}`});
         
