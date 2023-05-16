@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "discord.js": "14.x.x",
-    "node-fetch": "2.x.x"
+    "node-fetch": "2.x.x",
+    "color-thief-node": "^1.0.4"
   },
   "engines": {
     "node": "^16.9.0"
