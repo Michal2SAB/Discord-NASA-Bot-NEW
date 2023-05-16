@@ -28,3 +28,9 @@ Writing another NASA Discord Bot from scratch.
   - Get the latest james webb telescope news.
 </details>
 
+<details>
+  <summary>!launches</summary>
+  
+  - Displays information about upcoming space launches.
+</details>
+
