@@ -5,6 +5,7 @@ const { EmbedBuilder } = require('discord.js');
 module.exports = {
     name: 'marsimage',
     description: 'Get a random image from a random sol of a random Mars rover using NASA\'s Mars Rover Photos API',
+    aliases: ['mi', 'mimage', 'marsphoto']
   
     async execute(message, args, commands) {
         const rovers = ['curiosity', 'opportunity', 'spirit', 'perseverance'];
