@@ -34,3 +34,9 @@ Writing another NASA Discord Bot from scratch.
   - Displays information about upcoming space launches.
 </details>
 
+<details>
+  <summary>!apod</summary>
+  
+  - Displays the Astronomy Picture of the Day. Today's, random or specified date.
+</details>
+
