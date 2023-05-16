@@ -1,6 +1,7 @@
 module.exports = {
     name: 'help',
     description: 'Displays a list of available commands.',
+    aliases: ['commands', 'info'],
   
     execute(message, args, commands) {
       // Get an array of command names
