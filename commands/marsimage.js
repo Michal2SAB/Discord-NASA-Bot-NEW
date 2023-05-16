@@ -1,6 +1,7 @@
 // Necessary classes and modules
 const fetch = require('node-fetch');
 const { EmbedBuilder } = require('discord.js');
+const { getColorFromURL } = require('color-thief-node');
 
 module.exports = {
     name: 'marsimage',
@@ -52,12 +53,16 @@ module.exports = {
       
         const photo = data.photos[Math.floor(Math.random() * data.photos.length)];
         
+        const dominantColor = await getColorFromURL(photo.img_src);
+        const embedColor = dominantColor.reduce((acc, cur) => acc + cur.toString(16).padStart(2, '0'), '');
+        
         // Create embed object
         const embed = new EmbedBuilder()
           .setTitle(`${rover.charAt(0).toUpperCase() + rover.slice(1)} Rover`)
           .setDescription(embedDescription)
           .setImage(photo.img_src)
-          .setFooter({text: `Sol: ${sol} | Earth Date: ${photo.earth_date}`});
+          .setFooter({text: `Sol: ${sol} | Earth Date: ${photo.earth_date}`})
+          .setColor(`#${embedColor}`);
         
         // Send the response
         message.channel.send({ embeds: [embed] });
