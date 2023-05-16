@@ -18,7 +18,7 @@ const client = new Client({
 const commands = new Collection();
 const commandPrefix = config.prefix;
 
-const commandWhitelist = ['help', 'insight', 'marsimage', 'jwstnews'];
+const commandWhitelist = ['help', 'insight', 'marsimage', 'jwstnews', 'launches'];
 
 const commandFiles = fs.readdirSync(path.join(__dirname, 'commands')).filter(file => {
     // Validate the file name to prevent directory traversal attacks
