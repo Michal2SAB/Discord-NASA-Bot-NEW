@@ -5,6 +5,7 @@ const { EmbedBuilder } = require('discord.js');
 module.exports = {
     name: 'insight',
     description: 'Provides most recent weather information for Mars',
+    aliases: ['marsweather', 'mw'],
 
     async execute(message, args, commands) {
         try {
